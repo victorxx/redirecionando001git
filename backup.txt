@@ -1,91 +1,75 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página com animação e redirecionamento rápido ao final.">
-    <meta name="keywords" content="redirecionamento, animação, rosa, links, aleatórios, números, letras, JavaScript">
-    <meta name="author" content="Seu Nome">
-    <title>Redirecionamento Aleatório com Animação</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .random-info {
-            margin-top: 30px;
-            text-align: center;
-        }
-        .random-info span {
-            font-weight: bold;
-        }
-        /* Estilo da animação */
-        .rose-animation {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            background-color: #ff69b4;
-            border-radius: 50%;
-            animation: growAndSpin 2s ease-in-out forwards;
-            display: none;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Redirecionando para um destino aleatório. Aguarde um momento...">
+  <title>Redirecionando...</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, blue, white);
+      color: #ffffff;
+      text-align: center;
+      padding-top: 100px;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        @keyframes growAndSpin {
-            0% {
-                transform: translate(-50%, -50%) scale(0) rotate(0deg);
-                opacity: 0;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
-                opacity: 0.7;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1) rotate(360deg);
-                opacity: 1;
-            }
-        }
-    </style>
+    h1 {
+      font-size: 2em;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1.2em;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    #unique-id {
+      margin-top: 40px;
+      font-family: monospace;
+      font-size: 1em;
+      color: #ddd;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+
+    .walking-person {
+      margin: 40px auto;
+      width: 80px;
+      height: auto;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+  <h1>Redirecionando...</h1>
+  <!-- Animação de pessoa andando -->
+  <img src="https://i.gifer.com/7VE.gif" alt="Pessoa andando" class="walking-person">
+  
+  <p>Se não for redirecionado automaticamente, <span id="fallback-link">aguarde...</span></p>
+  <div id="unique-id"></div>
 
-<div class="container">
-    <h1>Aguarde estamos redirecionando você</h1>
-
-   
-    <!-- Conteúdo fictício para fazer a rolagem -->
-    <div style="height: 1500px;"></div>
-
-    <div class="random-info">
-        <p>Abaixo, números e letras aleatórios gerados via JavaScript:</p>
-        <p><span id="randomNumbers"></span></p>
-        <p><span id="randomLetters"></span></p>
-    </div>
-</div>
-
-<!-- Animação do círculo -->
-<div class="rose-animation" id="roseAnimation"></div>
-
-<script>
-    // Array com os links fornecidos
+  <script>
     const destinos = [
-        "https://wa.me/5527999497001?text=ola%20quero%20saber%20sobre%20seguro%20e%20consorcio",
+                    
+                   "https://victorxx.github.io/reflexaogithubrandom01/ads.html",
+                   "https://victorxx.github.io/segurogithub01/ads.html",
+                   "https://wa.me/5527999497001?text=ola%20quero%20saber%20sobre%20seguro%20e%20consorcio",
         "https://victorxx.github.io/encaminhargithub/",
         "https://victorxx.github.io/reflexaogithubrandom01/ads.html",
         "https://victorxx.github.io/segurogithub01/ads.html",
@@ -354,50 +338,27 @@
                 "https://chamada5.wordpress.com/2025/07/08/vps-avancado/",
                 "https://humornainternethumoresad.wordpress.com/vps-avancada/",
                 "https://tudosobretudo4.wordpress.com/vps-avancada/"
-
+                   
     ];
 
-    // Função para redirecionar para um link aleatório
-    function redirecionarAleatorio() {
-        const linkAleatorio = destinos[Math.floor(Math.random() * destinos.length)];
-        window.location.href = linkAleatorio;
+    function gerarIdentificador(tamanho = 899) {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*-_=+";
+      let resultado = "";
+      for (let i = 0; i < tamanho; i++) {
+        resultado += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return resultado;
     }
 
-    // Exibir animação do círculo quando a página for carregada
-    window.addEventListener('scroll', function() {
-        const alturaPagina = document.documentElement.scrollHeight;
-        const posicaoTela = window.innerHeight + window.scrollY;
-        
-        // Quando atingir o final da página, redirecionar e mostrar a animação
-        if (posicaoTela >= alturaPagina) {
-            document.getElementById("roseAnimation").style.display = "block"; // Exibe a animação
-            setTimeout(redirecionarAleatorio, 20); // Redireciona após 2 segundos
-        }
-    });
+    const destinoAleatorio = destinos[Math.floor(Math.random() * destinos.length)];
+    const identificadorUnico = gerarIdentificador();
 
-    // Gerar números aleatórios
-    function gerarNumerosAleatorios() {
-        let numeros = "";
-        for (let i = 0; i < 10; i++) {
-            numeros += Math.floor(Math.random() * 100) + " ";
-        }
-        document.getElementById("randomNumbers").textContent = numeros;
-    }
+    document.getElementById("unique-id").innerText = "Identificador único: " + identificadorUnico;
+    document.getElementById("fallback-link").innerHTML = `<a href="${destinoAleatorio}">clique aqui</a>`;
 
-    // Gerar letras aleatórias
-    function gerarLetrasAleatorias() {
-        const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        let letrasAleatorias = "";
-        for (let i = 0; i < 10; i++) {
-            letrasAleatorias += letras.charAt(Math.floor(Math.random() * letras.length)) + " ";
-        }
-        document.getElementById("randomLetters").textContent = letrasAleatorias;
-    }
-
-    // Chamar funções para gerar números e letras aleatórias
-    gerarNumerosAleatorios();
-    gerarLetrasAleatorias();
-</script>
-
+    setTimeout(() => {
+      window.location.href = destinoAleatorio;
+    }, 3000);
+  </script>
 </body>
 </html>
